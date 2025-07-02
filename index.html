@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitCore - Premium Fitness Equipment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+```
+    :root {
+        --primary-black: #000000;
+        --primary-white: #ffffff;
+        --dark-gray: #2a2a2a;
+        --neon-accent: #00ff88;
+        --light-gray: #f5f5f5;
+        --border-gray: #e0e0e0;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        color: var(--primary-black);
+        background: var(--primary-white);
+    }
+
+    /* Header */
+    .header {
+        background: var(--primary-white);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+    }
+
+    .logo {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--primary-black);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .logo::before {
+        content: "⚡";
+        color: var(--neon-accent);
+        font-size: 32px;
+    }
+
+    .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+    }
+
+    .nav-menu a {
+        text-decoration: none;
+        color: var(--primary-black);
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .nav-menu a:hover {
+        color: var(--neon-accent);
+    }
+
+    .cart-icon {
+        background: var(--primary-black);
+        color: var(--primary-white);
+        padding: 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .cart-icon:hover {
+        background: var(--neon-accent);
+        color: var(--primary-black);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+        background: linear-gradient(135deg, var(--dark-gray) 0%, var(--primary-black) 100%);
+        color: var(--primary-white);
+        padding: 120px 20px 80px;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        line-height: 1.2;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        opacity: 0.9;
+    }
+
+    .cta-button {
+        background: var(--neon-accent);
+        color: var(--primary-black);
+        padding: 15px 30px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0,255,136,0.3);
+    }
+
+    /* Product Categories */
+    .categories {
+        padding: 80px 20px;
+        background: var(--light-gray);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 50px;
+        color: var(--primary-black);
+    }
+
+    .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+    }
+
+    .category-card {
+        background: var(--primary-white);
+        border-radius: 12px;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .category-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .category-icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: var(--neon-accent);
+    }
+
+    .category-card h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    /* Featured Products */
+    .featured-products {
+        padding: 80px 20px;
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    .product-card {
+        background: var(--primary-white);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .product-image {
+        width: 100%;
+        height: 250px;
+        background: var(--light-gray);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+        color: var(--dark-gray);
+    }
+
+    .product-info {
+        padding: 25px;
+    }
+
+    .product-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .product-price {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--neon-accent);
+        margin-bottom: 15px;
+    }
+
+    .product-rating {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 15px;
+    }
+
+    .stars {
+        color: #ffd700;
+    }
+
+    .add-to-cart {
+        width: 100%;
+        background: var(--primary-black);
+        color: var(--primary-white);
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .add-to-cart:hover {
+        background: var(--neon-accent);
+        color: var(--primary-black);
+    }
+
+    /* About Section */
+    .about {
+        padding: 80px 20px;
+        background: var(--dark-gray);
+        color: var(--primary-white);
+    }
+
+    .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+    }
+
+    .about-text h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+
+    .about-text p {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        opacity: 0.9;
+    }
+
+    .about-image {
+        width: 100%;
+        height: 400px;
+        background: var(--primary-black);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 6rem;
+        color: var(--neon-accent);
+    }
+
+    /* Newsletter */
+    .newsletter {
+        padding: 60px 20px;
+        background: var(--neon-accent);
+        text-align: center;
+    }
+
+    .newsletter h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: var(--primary-black);
+    }
+
+    .newsletter-form {
+        max-width: 400px;
+        margin: 20px auto 0;
+        display: flex;
+        gap: 10px;
+    }
+
+    .newsletter-input {
+        flex: 1;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+
+    .newsletter-button {
+        background: var(--primary-black);
+        color: var(--primary-white);
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    /* Footer */
+    .footer {
+        background: var(--primary-black);
+        color: var(--primary-white);
+        padding: 50px 20px 20px;
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 30px;
+    }
+
+    .footer-section h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: var(--neon-accent);
+    }
+
+    .footer-section ul {
+        list-style: none;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-section ul li a {
+        color: var(--primary-white);
+        text-decoration: none;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+    }
+
+    .footer-section ul li a:hover {
+        opacity: 1;
+        color: var(--neon-accent);
+    }
+
+    .footer-bottom {
+        border-top: 1px solid var(--dark-gray);
+        padding-top: 20px;
+        text-align: center;
+        opacity: 0.7;
+    }
+
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+        background-color: var(--primary-white);
+        margin: 5% auto;
+        padding: 30px;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 500px;
+        position: relative;
+    }
+
+    .close {
+        position: absolute;
+        right: 20px;
+        top: 15px;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid var(--border-gray);
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .nav-menu {
+            display: none;
+        }
+
+        .mobile-menu-toggle {
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .about-content {
+            grid-template-columns: 1fr;
+        }
+
+        .newsletter-form {
+            flex-direction: column;
+        }
+
+        .category-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .product-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+```
+
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">FitCore</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">Startseite</a></li>
+                    <li><a href="#products">Produkte</a></li>
+                    <li><a href="#about">Über uns</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon" onclick="openCart()">🛒 <span id="cart-count">0</span></div>
+            <button class="mobile-menu-toggle">☰</button>
+        </div>
+    </header>
+
+```
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Dein Körper. Deine Regeln.</h1>
+        <p>Premium Fitness-Equipment für maximale Performance. Trainiere wie ein Profi mit unserer professionellen Ausrüstung.</p>
+        <a href="#products" class="cta-button">Jetzt entdecken</a>
+    </div>
+</section>
+
+<!-- Product Categories -->
+<section class="categories" id="products">
+    <div class="container">
+        <h2 class="section-title">Kategorien</h2>
+        <div class="category-grid">
+            <div class="category-card" onclick="showCategory('training')">
+                <div class="category-icon">🏋️</div>
+                <h3>Trainingsgeräte</h3>
+                <p>Klimmzugstangen, Parallettes, Gewichte und mehr</p>
+            </div>
+            <div class="category-card" onclick="showCategory('smart')">
+                <div class="category-icon">⌚</div>
+                <h3>Smart-Gadgets</h3>
+                <p>Fitness-Tracker, Smart-Waagen, Apps</p>
+            </div>
+            <div class="category-card" onclick="showCategory('accessories')">
+                <div class="category-icon">🎯</div>
+                <h3>Zubehör</h3>
+                <p>Widerstandsbänder, Dip-Belts, Handschuhe</p>
+            </div>
+            <div class="category-card" onclick="showCategory('nutrition')">
+                <div class="category-icon">🥤</div>
+                <h3>Nahrung & Regeneration</h3>
+                <p>Supplements, Recovery-Tools, Ernährung</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products -->
+<section class="featured-products">
+    <div class="container">
+        <h2 class="section-title">Bestseller</h2>
+        <div class="product-grid" id="product-grid">
+            <div class="product-card">
+                <div class="product-image">🏋️</div>
+                <div class="product-info">
+                    <h3 class="product-title">Premium Klimmzugstange</h3>
+                    <div class="product-price">89,99 €</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span>(127 Bewertungen)</span>
+                    </div>
+                    <p>Stabile Türklimmzugstange für alle Türrahmen. Max. Belastung: 150kg</p>
+                    <button class="add-to-cart" onclick="addToCart('Premium Klimmzugstange', 89.99)">In den Warenkorb</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">⌚</div>
+                <div class="product-info">
+                    <h3 class="product-title">Fitness-Tracker Pro</h3>
+                    <div class="product-price">199,99 €</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span>(89 Bewertungen)</span>
+                    </div>
+                    <p>Smartwatch mit Herzfrequenz, GPS und 30 Sportmodi</p>
+                    <button class="add-to-cart" onclick="addToCart('Fitness-Tracker Pro', 199.99)">In den Warenkorb</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🎯</div>
+                <div class="product-info">
+                    <h3 class="product-title">Widerstandsband Set</h3>
+                    <div class="product-price">34,99 €</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span>(203 Bewertungen)</span>
+                    </div>
+                    <p>5 Bänder mit verschiedenen Widerständen inkl. Türanker</p>
+                    <button class="add-to-cart" onclick="addToCart('Widerstandsband Set', 34.99)">In den Warenkorb</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about" id="about">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Über FitCore</h2>
+                <p>Seit 2020 sind wir dein Partner für professionelles Fitness-Equipment. Unser Team aus Sportwissenschaftlern und Fitness-Enthusiasten wählt nur die beste Ausrüstung für dich aus.</p>
+                <p>Wir glauben daran, dass jeder Mensch das Potenzial hat, seine Fitnessziele zu erreichen - mit der richtigen Ausrüstung und der nötigen Motivation.</p>
+                <p><strong>Unsere Mission:</strong> Premium Qualität zu fairen Preisen, damit du dich voll auf dein Training konzentrieren kannst.</p>
+            </div>
+            <div class="about-image">💪</div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter -->
+<section class="newsletter">
+    <div class="container">
+        <h2>Bleib in Form</h2>
+        <p>Erhalte die neuesten Fitness-Tipps und exklusive Angebote</p>
+        <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+            <input type="email" class="newsletter-input" placeholder="Deine E-Mail Adresse" required>
+            <button type="submit" class="newsletter-button">Anmelden</button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>FitCore</h3>
+                <p>Dein Partner für Premium Fitness-Equipment. Trainiere wie ein Profi.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Schnelllinks</h3>
+                <ul>
+                    <li><a href="#home">Startseite</a></li>
+                    <li><a href="#products">Produkte</a></li>
+                    <li><a href="#about">Über uns</a></li>
+                    <li><a href="#contact" onclick="openContact()">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Service</h3>
+                <ul>
+                    <li><a href="#" onclick="openFAQ()">FAQ</a></li>
+                    <li><a href="#" onclick="openShipping()">Versand</a></li>
+                    <li><a href="#" onclick="openReturns()">Rückgabe</a></li>
+                    <li><a href="#" onclick="openPayment()">Auszahlung</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Kontakt</h3>
+                <p>📧 info@fitcore.de</p>
+                <p>📞 +49 123 456 789</p>
+                <p>📍 München, Deutschland</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 FitCore. Alle Rechte vorbehalten.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Modals -->
+<div id="cartModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeCart()">&times;</span>
+        <h2>Warenkorb</h2>
+        <div id="cart-items"></div>
+        <div id="cart-total"></div>
+        <button class="cta-button" onclick="checkout()" style="width: 100%; margin-top: 20px;">Zur Kasse</button>
+    </div>
+</div>
+
+<div id="paymentModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closePayment()">&times;</span>
+        <h2>Auszahlungsdaten</h2>
+        <form id="paymentForm" onsubmit="savePaymentData(event)">
+            <div class="form-group">
+                <label for="iban">IBAN:</label>
+                <input type="text" id="iban" name="iban" placeholder="DE12 3456 7890 1234 5678 90" required>
+            </div>
+            <div class="form-group">
+                <label for="bankName">Bank Name:</label>
+                <input type="text" id="bankName" name="bankName" placeholder="Deutsche Bank" required>
+            </div>
+            <div class="form-group">
+                <label for="accountHolder">Kontoinhaber:</label>
+                <input type="text" id="accountHolder" name="accountHolder" placeholder="Max Mustermann" required>
+            </div>
+            <button type="submit" class="cta-button" style="width: 100%;">Speichern</button>
+        </form>
+    </div>
+</div>
+
+<div id="contactModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeContact()">&times;</span>
+        <h2>Kontakt</h2>
+        <form onsubmit="sendMessage(event)">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-Mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Nachricht:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="cta-button" style="width: 100%;">Nachricht senden</button>
+        </form>
+    </div>
+</div>
+
+<div id="faqModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeFAQ()">&times;</span>
+        <h2>Häufig gestellte Fragen</h2>
+        <div style="text-align: left;">
+            <h3>🚚 Wie lange dauert der Versand?</h3>
+            <p>Standard-Versand: 2-3 Werktage<br>Express-Versand: 1-2 Werktage</p>
+            
+            <h3>💰 Welche Zahlungsmethoden akzeptiert ihr?</h3>
+            <p>PayPal, Kreditkarte, SEPA-Lastschrift, Rechnung</p>
+            
+            <h3>🔄 Kann ich Artikel zurückgeben?</h3>
+            <p>Ja, 30 Tage kostenfreies Rückgaberecht</p>
+            
+            <h3>📞 Wie erreiche ich den Support?</h3>
+            <p>E-Mail: info@fitcore.de<br>Telefon: +49 123 456 789</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Shopping Cart
+    let cart = [];
+    let cartCount = 0;
+
+    function addToCart(productName, price) {
+        cart.push({name: productName, price: price});
+        cartCount++;
+        document.getElementById('cart-count').textContent = cartCount;
+        alert(`${productName} wurde zum Warenkorb hinzugefügt!`);
+    }
+
+    function openCart() {
+        const modal = document.getElementById('cartModal');
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        
+        cartItems.innerHTML = '';
+        let total = 0;
+        
+        cart.forEach((item, index) => {
+            const itemDiv = document.createElement('div');
+            itemDiv.innerHTML = `
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px; padding: 10px; border: 1px solid #eee; border-radius: 5px;">
+                    <span>${item.name}</span>
+                    <span>${item.price.toFixed(2)} €</span>
+                    <button onclick="removeFromCart(${index})" style="background: red; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">×</button>
+                </div>
+            `;
+            cartItems.appendChild(itemDiv);
+            total += item.price;
+        });
+        
+        cartTotal.innerHTML = `<strong>Gesamt: ${total.toFixed(2)} €</strong>`;
+        modal.style.display = 'block';
+    }
+
+    function closeCart() {
+        document.getElementById('cartModal').style.display = 'none';
+    }
+
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        cartCount--;
+        document.getElementById('cart-count').textContent = cartCount;
+        openCart();
+    }
+
+    function checkout() {
+        if (cart.length === 0) {
+            alert('Ihr Warenkorb ist leer!');
+            return;
+        }
+        alert('Weiterleitung zur Kasse... (In einer echten Anwendung würde hier ein Checkout-Prozess starten)');
+        closeCart();
+    }
+
+    function openPayment() {
+        document.getElementById('paymentModal').style.display = 'block';
+    }
+
+    function closePayment() {
+        document.getElementById('paymentModal').style.display = 'none';
+    }
+
+    function savePaymentData(event) {
+        event.preventDefault();
+        const iban = document.getElementById('iban').value;
+        const bankName = document.getElementById('bankName').value;
+        const accountHolder = document.getElementById('accountHolder').value;
+        
+        alert(`Auszahlungsdaten gespeichert:\nIBAN: ${iban}\nBank: ${bankName}\nKontoinhaber: ${accountHolder}`);
+        closePayment();
+    }
+
+    function openContact() {
+        document.getElementById('contactModal').style.display = 'block';
+    }
+
+    function closeContact() {
+        document.getElementById('contactModal').style.display = 'none';
+    }
+
+    function sendMessage(event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        
+        alert(`Nachricht gesendet!\nVon: ${name} (${email})\nNachricht: ${message}`);
+        closeContact();
+        event.target.reset();
+    }
+
+    function openFAQ() {
+        document.getElementById('faqModal').style.display = 'block';
+    }
+
+    function closeFAQ() {
+        document.getElementById('faqModal').style.display = 'none';
+    }
+
+    function openShipping() {
+        alert('Versandinformationen:\n- Kostenloser Versand ab 50€\n- Standard: 2-3 Werktage\n- Express: 1-2 Werktage');
+    }
+
+    function openReturns() {
+        alert('Rückgabebedingungen:\n- 30 Tage Rückgaberecht\n- Artikel in Originalverpackung
+```
